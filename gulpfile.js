@@ -32,7 +32,7 @@ var paths = {
 };
 
 gulp.task('css', function() {
-    return gulp.src(paths.dev.less+'*.{less,css}')
+    return gulp.src(paths.dev.less+'*.less')
     .pipe(plumber())
     .pipe(less())
     .pipe(minify({keepSpecialComments:0}))
@@ -93,6 +93,7 @@ gulp.task('connect', function(callback) {
 //task that fires up browserSync proxy after connect server has started
 gulp.task('browser-sync',['connect'], function() {
     browserSync({
+      injectChanges: true,
       proxy: '127.0.0.1:8001',
       port: 8910
   });
