@@ -23,18 +23,28 @@ var paths = {
     },
     'production': {
         'css'   : './dist/assets/css/',
-        'js'    : './dist/assets/js/'
+        'js'    : './dist/assets/js/',
+        'fonts' : './dist/assets/fonts/'
     }
 };
 
 gulp.task('css', function() {
-    return gulp.src(paths.dev.less+'author.less')
-        .pipe(plumber())
-        .pipe(less())
-        .pipe(minify({keepSpecialComments:0}))
-        .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest(paths.production.css))
-        .pipe(notify("CSS compilation successful!"));
+    return gulp.src(paths.dev.less+'*.{less,css}')
+    .pipe(plumber())
+    .pipe(less())
+    .pipe(minify({keepSpecialComments:0}))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(concat('author.min.css'))
+    .pipe(gulp.dest(paths.production.css))
+    .pipe(notify("CSS compilation successful!"));
+});
+
+// Fonts
+gulp.task('fonts', function() {
+    return gulp.src([
+        'bower_components/font-awesome/fonts/fontawesome-webfont.*'
+    ])
+    .pipe(gulp.dest(paths.production.fonts));
 });
 
 // JS
@@ -56,10 +66,10 @@ gulp.task('vendor-js', function(){
 
 gulp.task('vendor-css', function(){
     return gulp.src(bower('**/*.{css,less}'))
-      .pipe(less())
-      .pipe(concat('vendor.min.css'))
-      .pipe(minify({keepSpecialComments:0}))
-      .pipe(gulp.dest(paths.production.css));
+    .pipe(less())
+    .pipe(concat('vendor.min.css'))
+    .pipe(minify({keepSpecialComments:0}))
+    .pipe(gulp.dest(paths.production.css));
 });
 
 //task that fires up php server at port 8001
@@ -80,7 +90,7 @@ gulp.task('browser-sync',['connect'], function() {
 });
 
 //default task that runs task browser-sync ones and then watches php files to change. If they change browserSync is reloaded
-gulp.task('default', ['css','js','vendor-css','vendor-js','browser-sync'], function () {
+gulp.task('default', ['css','js','vendor-css','vendor-js','fonts','browser-sync'], function () {
     gulp.watch(['**/*.php'], browserSync.reload);
     gulp.watch('src/less/*.less', ['css']).on('change', browserSync.reload);
 
