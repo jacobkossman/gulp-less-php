@@ -12,6 +12,7 @@ var gulp        = require('gulp'),
     notify      = require('gulp-notify'),
     plumber     = require('gulp-plumber'),
     gutil       = require('gulp-util'),
+    imagemin    = require('gulp-imagemin'),
     browserSync = require('browser-sync');
 
 // Paths
@@ -19,12 +20,14 @@ var paths = {
     'dev': {
         'less'   : './src/less/',
         'js'     : './src/js/',
-        'vendor' : './src/vendor/'
+        'vendor' : './src/vendor/',
+        'images' : './src/img/'
     },
     'production': {
-        'css'   : './dist/assets/css/',
-        'js'    : './dist/assets/js/',
-        'fonts' : './dist/assets/fonts/'
+        'css'    : './dist/assets/css/',
+        'js'     : './dist/assets/js/',
+        'fonts'  : './dist/assets/fonts/',
+        'images' : './dist/assets/img/'
     }
 };
 
@@ -72,6 +75,13 @@ gulp.task('vendor-css', function(){
     .pipe(gulp.dest(paths.production.css));
 });
 
+gulp.task('images', function() {
+    return  gulp.src(paths.dev.images+'**/*.{png,jpg,gif}')
+    .pipe(imagemin({ progressive: true }))
+    .pipe(gulp.dest(paths.production.images))
+    .pipe( notify( { message: 'Images task complete', onLast: true } ) );
+});
+
 //task that fires up php server at port 8001
 gulp.task('connect', function(callback) {
   connect.server({
@@ -79,7 +89,6 @@ gulp.task('connect', function(callback) {
     base: 'dist'
   }, callback);
 });
-
 
 //task that fires up browserSync proxy after connect server has started
 gulp.task('browser-sync',['connect'], function() {
@@ -90,7 +99,7 @@ gulp.task('browser-sync',['connect'], function() {
 });
 
 //default task that runs task browser-sync ones and then watches php files to change. If they change browserSync is reloaded
-gulp.task('default', ['css','js','vendor-css','vendor-js','fonts','browser-sync'], function () {
+gulp.task('default', ['css','js','vendor-css','vendor-js','fonts','images','browser-sync'], function () {
     gulp.watch(['**/*.php'], browserSync.reload);
     gulp.watch('src/less/*.less', ['css']).on('change', browserSync.reload);
 
