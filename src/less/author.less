@@ -1,7 +1,86 @@
+@import "https://fonts.googleapis.com/css?family=Open+Sans";
+@import "helpers";
+
+@font-face {
+    font-family: 'arca_majora_2heavy';
+    src: url('../fonts/arcamajora2-heavy-webfont.woff2') format('woff2'),
+         url('../fonts/arcamajora2-heavy-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@blue: #1974BD;
+@display-font: "arca_majora_2heavy", cursive;
+
+::selection {
+    background-color: @blue;
+    color: white;
+}
+
 body {
     background-color: black;
+    font-family: 'Open Sans',sans-serif;
 }
 
 .container {
     background-color: white;
+}
+
+#header, #content {
+    padding: 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0px;
+    padding-top: 0px;
+    font-family: @display-font;
+}
+
+a {
+    .fa {
+        color: black;
+        .transition(color,250ms);
+    }
+    
+    &:hover {
+        .fa {
+            color: @blue;
+            .transition(color,250ms);
+        }
+    }
+}
+
+.navbar {
+    background-color: @blue;
+    .remove-border();
+        
+    .form-control {
+        .remove-border();
+    }
+    
+    &.navbar-default {
+        li {
+            ul.dropdown-menu {
+                li a {
+                    color: black;
+                    &:hover {
+                        background-color: @blue;
+                        color: white;
+                    }
+                }
+            }
+            a {
+                color: white;
+                &:hover {
+                    background-color: white;
+                    color: black;
+                }
+            }
+            
+            &.active a {
+                background-color: white;
+            }
+        }        
+    }   
 }

@@ -21,7 +21,8 @@ var paths = {
         'less'   : './src/less/',
         'js'     : './src/js/',
         'vendor' : './src/vendor/',
-        'images' : './src/img/'
+        'images' : './src/img/',
+        'fonts'  : './src/fonts/'
     },
     'production': {
         'css'    : './dist/assets/css/',
@@ -32,7 +33,7 @@ var paths = {
 };
 
 gulp.task('css', function() {
-    return gulp.src(paths.dev.less+'*.less')
+    return gulp.src(paths.dev.less+'author.less')
     .pipe(plumber())
     .pipe(less())
     .pipe(minify({keepSpecialComments:0}))
@@ -76,10 +77,16 @@ gulp.task('vendor-css', function(){
 });
 
 gulp.task('images', function() {
-    return  gulp.src(paths.dev.images+'**/*.{png,jpg,gif}')
+    return gulp.src(paths.dev.images+'**/*.{png,jpg,gif}')
     .pipe(imagemin({ progressive: true }))
     .pipe(gulp.dest(paths.production.images))
     .pipe( notify( { message: 'Images task complete', onLast: true } ) );
+});
+
+gulp.task('fonts', function() {
+    return gulp.src(paths.dev.fonts+'**/*.{woff,woff2}')
+    .pipe(gulp.dest(paths.production.fonts))
+    .pipe( notify('Fonts task complete') );
 });
 
 //task that fires up php server at port 8001
@@ -94,6 +101,7 @@ gulp.task('connect', function(callback) {
 gulp.task('browser-sync',['connect'], function() {
     browserSync({
       injectChanges: true,
+      reloadDelay: 2000,
       proxy: '127.0.0.1:8001',
       port: 8910
   });
