@@ -1,4 +1,4 @@
-@import "https://fonts.googleapis.com/css?family=Open+Sans";
+@import "https://fonts.googleapis.com/css?family=Roboto";
 @import "helpers";
 
 @font-face {
@@ -12,6 +12,7 @@
 
 @blue: #1974BD;
 @display-font: "arca_majora_2heavy", cursive;
+@body-font: "Roboto",sans-serif;
 
 ::selection {
     background-color: @blue;
@@ -20,7 +21,7 @@
 
 body {
     background-color: black;
-    font-family: 'Open Sans',sans-serif;
+    font-family: @body-font;
 }
 
 .container {
