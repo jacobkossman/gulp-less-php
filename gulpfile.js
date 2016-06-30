@@ -3,8 +3,9 @@
 // Require
 var gulp        = require('gulp'),
     connect     = require('gulp-connect-php'),
-    bower       = require('main-bower-files'),
+    bowerFiles  = require('main-bower-files'),
     less        = require('gulp-less'),
+    sass        = require('gulp-sass'),
     minify      = require('gulp-minify-css'),
     concat      = require('gulp-concat'),
     uglify      = require('gulp-uglify'),
@@ -61,16 +62,26 @@ gulp.task('js', function(){
 
 // Tasks
 gulp.task('vendor-js', function(){
-    return gulp.src(bower('**/*.js'))
+    gutil.log(bowerFiles('**/*.js'));
+
+    return gulp.src(bowerFiles('**/*.js'))
     .pipe(concat('vendor.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest(paths.production.js));
 });
 
 gulp.task('vendor-css', function(){
-    return gulp.src(bower('**/*.{css,less}'))
+    return gulp.src(bowerFiles('**/*.{css,less}'))
     .pipe(less())
     .pipe(concat('vendor.min.css'))
+    .pipe(minify({keepSpecialComments:0}))
+    .pipe(gulp.dest(paths.production.css));
+});
+
+gulp.task('vendor-sass', function(){
+    return gulp.src(bowerFiles('**/*.scss'))
+    .pipe(sass())
+    .pipe(concat('bootstrap.min.css'))
     .pipe(minify({keepSpecialComments:0}))
     .pipe(gulp.dest(paths.production.css));
 });
@@ -86,24 +97,6 @@ gulp.task('fonts', function() {
     return gulp.src(paths.dev.fonts+'**/*.{woff,woff2}')
     .pipe(gulp.dest(paths.production.fonts))
     .pipe( notify('Fonts task complete') );
-});
-
-//task that fires up php server at port 8001
-gulp.task('connect', function(callback) {
-  connect.server({
-    port: 8001,
-    base: 'dist'
-  }, callback);
-});
-
-//task that fires up browserSync proxy after connect server has started
-gulp.task('browser-sync',['connect'], function() {
-    browserSync({
-      injectChanges: true,
-      reloadDelay: 2000,
-      proxy: '127.0.0.1:8001',
-      port: 8910
-  });
 });
 
 //default task that runs task browser-sync ones and then watches php files to change. If they change browserSync is reloaded

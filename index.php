@@ -1,76 +1,91 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Browser Sync</title>
-    <link rel="stylesheet" href="dist/assets/css/vendor.min.css" type="text/css" media="screen" charset="utf-8">
-    <link rel="stylesheet" href="dist/assets/css/author.min.css" type="text/css" media="screen" charset="utf-8">
-</head>
-<body>
-    <div class="container" id="header"><img src="dist/assets/img/header.jpg" class="img-responsive"></div>
+<html lang="en">
+  <head>
+    <title>Bootstrap 4 Intro</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-	<div class="container" id="content">
-		<nav class="navbar navbar-default" role="navigation">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					</button>
-					<a href="#" class="navbar-brand visible-xs" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Menu</a>
-				</div>
-				
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">Link</a></li>
-						<li><a href="#">Link</a></li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li class="divider"></li>
-								<li><a href="#">Separated link</a></li>
-								<li class="divider"></li>
-								<li><a href="#">One more separated link</a></li>
-							</ul>
-						</li>
-					</ul>
-					<form class="navbar-form navbar-right search-form" role="search">
-                        <div class="form-group has-feedback">
-                    		<label for="search" class="sr-only">Search</label>
-                            <input type="text" class="form-control" name="search" id="search" placeholder="search">
-                      		<span class="fa fa-search form-control-feedback"></span>
-                    	</div>
-					</form>
-				</div>
-			</div>
-		</nav>
+    <link rel="stylesheet" href="dist/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="dist/assets/css/author.min.css">
+  </head>
+  <body>
+  <nav class="navbar navbar-dark navbar-full">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="#players" class="nav-link">Players</a></li>
+        <li class="nav-item"><a href="#schedule" class="nav-link">Schedule</a></li>
+      </ul>
+      <a class="navbar-brand pull-sm-right m-r-0 hidden-xs-down" href="http://example.com">Link To Example</a>
+    </div>
+  </nav>
+    <div class="container">
+<small class="text-muted">With faded secondary text</small>
 
+<!-- headings -->
+<h1 class="display-1">Display 1</h1>
+<h1 class="display-2">Display 2</h1>
+<h1 class="display-3">Display 3</h1>
+<h1 class="display-4">Display 4</h1>
 
-    	<div class="col-lg-12">
-        	<h1>Lorem Ipsum</h1>
-        </div>
-    	<div class="col-lg-6">
-        	<p class="justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    	</div>
-    	<div class="col-lg-6">
-        	<p class="justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    	</div>
-    	
-    	<footer class="col-lg-12">
-        	<h3>
-            	<a href="#"><i class="fa fa-facebook-square"></i></a>
-            	<a href="#"><i class="fa fa-twitter-square"></i></a>
-            	<a href="#"><i class="fa fa-youtube-square"></i></a>
-            </h3>
-    	</footer>
-	</div>
+<!-- lead styling for paragraphs -->
+<p class="lead">
+  Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
+</p>
 
-    <script src="dist/assets/js/vendor.min.js" charset="utf-8"></script>
-    <script src="dist/assets/js/author.min.js" charset="utf-8"></script>
-    
-</body>
+<!-- misc text styles -->
+<p>You can use the mark tag to <mark>highlight</mark> text.</p>
+<p><del>This line of text is meant to be treated as deleted text.</del></p>
+<p><s>This line of text is meant to be treated as no longer accurate.</s></p>
+<p><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
+<p><u>This line of text will render as underlined</u></p>
+<p><small>This line of text is meant to be treated as fine print.</small></p>
+<p><strong>This line rendered as bold text.</strong></p>
+<p><em>This line rendered as italicized text.</em></p>
+<p><abbr title="attribute">attr</abbr></p>
+<p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr></p>
+<blockquote class="blockquote">
+  <p class="m-b-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+</blockquote>
+<blockquote class="blockquote">
+  <p class="m-b-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+</blockquote>
+<blockquote class="blockquote blockquote-reverse">
+  <p class="m-b-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+</blockquote>
+
+<!-- **only works on immediate child elements -->
+
+<!-- lists -->
+<ul class="list-unstyled">
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing elit</li>
+  <li>Integer molestie lorem at massa</li>
+  <li>Facilisis in pretium nisl aliquet</li>
+  <li>Nulla volutpat aliquam velit
+    <ul>
+      <li>Phasellus iaculis neque</li>
+      <li>Purus sodales ultricies</li>
+      <li>Vestibulum laoreet porttitor sem</li>
+      <li>Ac tristique libero volutpat at</li>
+    </ul>
+  </li>
+  <li>Faucibus porta lacus fringilla vel</li>
+  <li>Aenean sit amet erat nunc</li>
+  <li>Eget porttitor lorem</li>
+</ul>
+
+<ul class="list-inline">
+  <li class="list-inline-item">Lorem ipsum</li>
+  <li class="list-inline-item">Phasellus iaculis</li>
+  <li class="list-inline-item">Nulla volutpat</li>
+</ul>
+    </div>
+
+    <script src="dist/assets/js/vendor.min.js"></script>
+  </body>
 </html>
