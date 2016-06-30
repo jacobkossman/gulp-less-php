@@ -12,8 +12,7 @@ var gulp        = require('gulp'),
     notify      = require('gulp-notify'),
     plumber     = require('gulp-plumber'),
     gutil       = require('gulp-util'),
-    imagemin    = require('gulp-imagemin'),
-    browserSync = require('browser-sync');
+    imagemin    = require('gulp-imagemin');
 
 // Paths
 var paths = {
@@ -108,8 +107,6 @@ gulp.task('browser-sync',['connect'], function() {
 });
 
 //default task that runs task browser-sync ones and then watches php files to change. If they change browserSync is reloaded
-gulp.task('default', ['css','js','vendor-css','vendor-js','fonts','images','browser-sync'], function () {
-    gulp.watch(['**/*.php'], browserSync.reload);
-    gulp.watch('src/less/*.less', ['css']).on('change', browserSync.reload);
-
+gulp.task('default', ['css','js','vendor-css','vendor-js','fonts','images'], function () {
+    gulp.watch('src/less/*.less', ['css']);
 });
