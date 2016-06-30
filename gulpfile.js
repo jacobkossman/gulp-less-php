@@ -4,6 +4,7 @@
 var gulp        = require('gulp'),
     connect     = require('gulp-connect-php'),
     bowerFiles  = require('main-bower-files'),
+    autoprefixer = require('gulp-autoprefixer'),
     less        = require('gulp-less'),
     sass        = require('gulp-sass'),
     minify      = require('gulp-minify-css'),
@@ -33,9 +34,18 @@ var paths = {
 };
 
 gulp.task('css', function() {
-    return gulp.src(paths.dev.less+'author.less')
+    return gulp.src([paths.dev.less+'*.{css,less}','!'+paths.dev.less+'helpers.less'])
     .pipe(plumber())
     .pipe(less())
+    .pipe( autoprefixer(
+        'last 2 version',
+        '> 1%',
+        'safari 5',
+        'ie 8',
+        'ie 9',
+        'opera 12.1',
+        'ios 6',
+        'android 4' ) )
     .pipe(minify({keepSpecialComments:0}))
     .pipe(rename({suffix: '.min'}))
     .pipe(concat('author.min.css'))
@@ -62,8 +72,6 @@ gulp.task('js', function(){
 
 // Tasks
 gulp.task('vendor-js', function(){
-    gutil.log(bowerFiles('**/*.js'));
-
     return gulp.src(bowerFiles('**/*.js'))
     .pipe(concat('vendor.min.js'))
     .pipe(uglify())
@@ -71,6 +79,8 @@ gulp.task('vendor-js', function(){
 });
 
 gulp.task('vendor-css', function(){
+    gutil.log(bowerFiles("**/*.{css,less}"));
+
     return gulp.src(bowerFiles('**/*.{css,less}'))
     .pipe(less())
     .pipe(concat('vendor.min.css'))
@@ -102,4 +112,5 @@ gulp.task('fonts', function() {
 //default task that runs task browser-sync ones and then watches php files to change. If they change browserSync is reloaded
 gulp.task('default', ['css','js','vendor-css','vendor-js','fonts','images'], function () {
     gulp.watch('src/less/*.less', ['css']);
+    gulp.watch('src/js/author.js', ['js']);
 });

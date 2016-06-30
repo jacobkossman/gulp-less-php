@@ -22,8 +22,6 @@
     </div>
   </nav>
     <div class="container">
-<small class="text-muted">With faded secondary text</small>
-
 <!-- headings -->
 <h1 class="display-1">Display 1</h1>
 <h1 class="display-2">Display 2</h1>
@@ -34,6 +32,13 @@
 <p class="lead">
   Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
 </p>
+
+<div class="owl-carousel owl-theme">
+    <div class="item"><h3>Your Content</h3></div>
+    <div class="item"><h3>Your Content</h3></div>
+    <div class="item"><h3>Your Content</h3></div>
+    <div class="item"><h3>Your Content</h3></div>
+</div>
 
 <!-- misc text styles -->
 <p>You can use the mark tag to <mark>highlight</mark> text.</p>
@@ -58,34 +63,9 @@
   <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
 </blockquote>
 
-<!-- **only works on immediate child elements -->
-
-<!-- lists -->
-<ul class="list-unstyled">
-  <li>Lorem ipsum dolor sit amet</li>
-  <li>Consectetur adipiscing elit</li>
-  <li>Integer molestie lorem at massa</li>
-  <li>Facilisis in pretium nisl aliquet</li>
-  <li>Nulla volutpat aliquam velit
-    <ul>
-      <li>Phasellus iaculis neque</li>
-      <li>Purus sodales ultricies</li>
-      <li>Vestibulum laoreet porttitor sem</li>
-      <li>Ac tristique libero volutpat at</li>
-    </ul>
-  </li>
-  <li>Faucibus porta lacus fringilla vel</li>
-  <li>Aenean sit amet erat nunc</li>
-  <li>Eget porttitor lorem</li>
-</ul>
-
-<ul class="list-inline">
-  <li class="list-inline-item">Lorem ipsum</li>
-  <li class="list-inline-item">Phasellus iaculis</li>
-  <li class="list-inline-item">Nulla volutpat</li>
-</ul>
     </div>
 
     <script src="dist/assets/js/vendor.min.js"></script>
+    <script src="dist/assets/js/author.min.js"></script>
   </body>
 </html>
